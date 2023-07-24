@@ -1,0 +1,35 @@
+<!-- index.wxml -->
+<view class="container">
+  <view class="title">学生成绩单</view>
+
+<view class="container1">
+  <view class="navbar">
+    <view class="navbar-item" bindtap="handleNavYear" data-year="1">第一学年</view>
+    <view class="navbar-item" bindtap="handleNavYear" data-year="2">第二学年</view>
+    <view class="navbar-item" bindtap="handleNavYear" data-year="3">第三学年</view>
+    <view class="navbar-item" bindtap="handleNavYear" data-year="4">第四学年</view>
+  </view>
+
+  <view wx:for="{{scoreDataMap}}" wx:key="index" wx:if="{{selectedYear == index}}">
+    <view class="score-card">
+      <view class="gpa-card">
+        <view class="gpa4">
+          <view class="gpa4-value">{{scoreDataMap[index].gpa4}}</view>
+          <view class="gpa4-label">四分制绩点</view>
+        </view>
+        <view class="gpa5">
+          <view class="gpa5-value">{{scoreDataMap[index].gpa5}}</view>
+          <view class="gpa5-label">五分制绩点</view>
+        </view>
+      </view>
+
+      <view wx:for="{{scoreDataMap[index].subjects}}" wx:key="subject">
+        <view class="subject-score">
+          <view class="subject">{{item.subject}}:</view>
+          <view class="score">{{item.score}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+</view>
